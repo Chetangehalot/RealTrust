@@ -445,6 +445,12 @@ app.get('/api/database/status', async (req, res) => {
   }
 });
 
-// Start the server
-startServer();
+// Export app for Vercel serverless functions
+module.exports = app;
+
+// Start the server only if running directly (not as a module/required)
+// In Vercel, the file is required as a module, so startServer won't run
+if (require.main === module) {
+  startServer();
+}
 
