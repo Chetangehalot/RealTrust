@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-
-const API_BASE_URL = 'http://localhost:5000/api';
+import API_BASE_URL, { getImageUrl } from '../../config/api';
 
 function ClientManagement() {
   const navigate = useNavigate();
@@ -59,7 +58,7 @@ function ClientManagement() {
             <div key={client.id} className="bg-white rounded-xl shadow-md p-6 text-center hover:shadow-xl transition-all duration-300 border border-gray-200">
               <div className="w-28 h-28 mx-auto mb-4 rounded-full overflow-hidden border-4 border-gray-200 shadow-md">
                 <img
-                  src={client.image ? `http://localhost:5000${client.image}` : 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop'}
+                  src={client.image ? getImageUrl(client.image) : 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop'}
                   alt={client.name}
                   className="w-full h-full object-cover"
                 />

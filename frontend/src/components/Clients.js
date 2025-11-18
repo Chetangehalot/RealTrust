@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
+import { getImageUrl } from '../config/api';
 
 function Clients({ clients }) {
   const scrollContainerRef = useRef(null);
@@ -117,7 +118,7 @@ function Clients({ clients }) {
                   <div className="relative mb-4 -mt-12 z-20">
                     <div className="w-24 h-24 mx-auto rounded-full overflow-hidden border-4 border-white shadow-lg relative z-20">
                       <img 
-                        src={client.image ? `http://localhost:5000${client.image}` : 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop'} 
+                        src={client.image ? getImageUrl(client.image) : 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop'} 
                         alt={client.name}
                         className="w-full h-full object-cover"
                       />

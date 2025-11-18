@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import ImageCropper from './ImageCropper';
-
-const API_BASE_URL = 'http://localhost:5000/api';
+import API_BASE_URL, { getImageUrl } from '../../config/api';
 
 function AddClient() {
   const navigate = useNavigate();
@@ -35,11 +34,7 @@ function AddClient() {
           image: null
         });
         if (client.image) {
-          // Ensure the image path is correct
-          const imagePath = client.image.startsWith('http') 
-            ? client.image 
-            : `http://localhost:5000${client.image.startsWith('/') ? client.image : '/' + client.image}`;
-          setExistingImage(imagePath);
+          setExistingImage(getImageUrl(client.image));
         }
       } else {
         alert('Client not found.');

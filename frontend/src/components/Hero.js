@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import API_BASE_URL from '../config/api';
 
 function Hero() {
   // Use process.env.PUBLIC_URL for production deployment
@@ -21,7 +22,7 @@ function Hero() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:5000/api/contact', {
+      const response = await fetch(`${API_BASE_URL}/contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-
-const API_BASE_URL = 'http://localhost:5000/api';
+import API_BASE_URL, { getImageUrl } from '../../config/api';
 
 function ProjectManagement() {
   const navigate = useNavigate();
@@ -59,7 +58,7 @@ function ProjectManagement() {
             <div key={project.id} className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-200">
               <div className="h-48 overflow-hidden bg-gray-100">
                 <img
-                  src={project.image ? `http://localhost:5000${project.image}` : 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&h=300&fit=crop'}
+                  src={project.image ? getImageUrl(project.image) : 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&h=300&fit=crop'}
                   alt={project.name}
                   className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
                 />

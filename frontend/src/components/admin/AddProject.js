@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import ImageCropper from './ImageCropper';
-
-const API_BASE_URL = 'http://localhost:5000/api';
+import API_BASE_URL, { getImageUrl } from '../../config/api';
 
 function AddProject() {
   const navigate = useNavigate();
@@ -33,11 +32,7 @@ function AddProject() {
           image: null
         });
         if (project.image) {
-          // Ensure the image path is correct
-          const imagePath = project.image.startsWith('http') 
-            ? project.image 
-            : `http://localhost:5000${project.image.startsWith('/') ? project.image : '/' + project.image}`;
-          setExistingImage(imagePath);
+          setExistingImage(getImageUrl(project.image));
         }
       } else {
         alert('Project not found.');

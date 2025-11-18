@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
+import { getImageUrl } from '../config/api';
 
 function Projects({ projects }) {
   // Use process.env.PUBLIC_URL for production deployment
@@ -132,7 +133,7 @@ function Projects({ projects }) {
                 >
                   <div className="relative h-48 overflow-hidden">
                     <img 
-                      src={project.image ? `http://localhost:5000${project.image}` : 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&h=300&fit=crop'} 
+                      src={project.image ? getImageUrl(project.image) : 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&h=300&fit=crop'} 
                       alt={project.name}
                       className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
                     />

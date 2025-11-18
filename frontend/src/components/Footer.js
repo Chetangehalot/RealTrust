@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import logo from '../assets/Images/logo.svg';
+import API_BASE_URL from '../config/api';
 
 function Footer() {
   const [email, setEmail] = useState('');
@@ -19,7 +20,7 @@ function Footer() {
   const handleSubscribe = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:5000/api/subscribe', {
+      const response = await fetch(`${API_BASE_URL}/subscribe`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
