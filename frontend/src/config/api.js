@@ -16,4 +16,3 @@ export const getImageUrl = (imagePath) => {
 };
 
 export default API_BASE_URL;
-
